@@ -1,0 +1,26 @@
+import re
+
+
+# Extracts urls eg; https://www.apple.com/in/ and treats them as a single token
+def extract_urls(input_file):
+    output_file = "std_out_urls.txt"
+    regex = r"\bhttps?://\S+\b"
+    with open(output_file, "w") as f_out:
+        with open(input_file, "r") as f_in:
+            urls = re.findall(regex, f_in.read())
+        f_out.write(f"{len(urls)}" + "\n")
+        for url in urls:
+            f_out.write(url + "\n")
+    return output_file
+
+
+# Removes urls from files for further tokenization
+def remove_urls(input_file):
+    output_file = "no_urls.txt"
+    regex = r"\bhttps?://\S+\b"
+    with open(output_file, "w") as f_out:
+        with open(input_file, "r") as f_in:
+            row = f_in.read()
+            mod_content = re.sub(regex, "", row)
+            f_out.write(mod_content)
+    return output_file

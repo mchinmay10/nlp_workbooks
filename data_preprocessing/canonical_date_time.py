@@ -1,4 +1,5 @@
 import re
+import os
 
 
 # Function to convert date into a canonical format given as -> CF:D:yyyy-mm-dd
@@ -91,4 +92,53 @@ def time_to_canonical(input_file):
                 )
             )
 
+    return output_file
+
+
+# Extraction functions for creating standard outputs
+# A function that extracts canonical dates into a seperate file as a list
+def extract_canonical_dates(input_file):
+    output_file = "std_out_dates.txt"
+    regex = r"CF:D:\d{4}-\d{2}-\d{2}"
+    with open(output_file, "w") as f_out:
+        with open(input_file, "r") as f_in:
+            extracted_dates = re.findall(regex, f_in.read())
+        f_out.write(f"{len(extracted_dates)}" + "\n")
+        for date in extracted_dates:
+            f_out.write(date + "\n")
+    return output_file
+
+
+# Extracts canonical times into a seperate file as a list
+def extract_canonical_times(input_file):
+    output_file = "std_out_times.txt"
+    regex = r"CF:T:\d{2}:\d{2}:[A-Z]{3}"
+    with open(output_file, "w") as f_out:
+        with open(input_file, "r") as f_in:
+            extracted_times = re.findall(regex, f_in.read())
+        f_out.write(f"{len(extracted_times)}" + "\n")
+        for time in extracted_times:
+            f_out.write(time + "\n")
+    return output_file
+
+
+# Removing these canonical formats from the file
+def remove_canonical_date_time(input_file):
+    inter_file = "no_date.txt"
+    output_file = "no_date_time.txt"
+    regex_date = r"CF:D:\d{4}-\d{2}-\d{2}"
+    regex_time = r"CF:T:\d{2}:\d{2}:[A-Z]{3}"
+    with open(inter_file, "w") as f_out:
+        with open(input_file, "r") as f_in:
+            row = f_in.read()
+            mod_content = re.sub(regex_date, "", row)
+            f_out.write(mod_content)
+    f_out.close()
+    f_in.close()
+    with open(output_file, "w") as f_out:
+        with open(inter_file, "r") as f_in:
+            row = f_in.read()
+            mod_content = re.sub(regex_time, "", row)
+            f_out.write(mod_content)
+    os.remove(inter_file)
     return output_file
