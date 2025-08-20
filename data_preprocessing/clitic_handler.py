@@ -58,5 +58,5 @@ def process_clitics(input_file):
                 for c in clitic_list:
                     f_out.write(c + "\n")
             else:
-                f_out.write("Clitic: " + clitic + " not mapped!\n")
+                f_out.write("Clitic: {" + clitic + "} not mapped!\n")
     return output_file

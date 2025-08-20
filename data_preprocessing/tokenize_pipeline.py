@@ -24,6 +24,10 @@ from clitic_handler import (
     process_clitics,
     remove_clitics,
 )
+from emoji_handler import (
+    extract_emoticons,
+    remove_emoticons,
+)
 
 
 # Complete pipeline for tokenization
@@ -97,6 +101,14 @@ def tokenize():
     no_clitics = remove_clitics(no_hashtags)
     print(f"File generated: {no_clitics}")
     inter_files.append(no_clitics)
+    # Stage 10a: Extract emoticons as a single token
+    std_out_emotes = extract_emoticons(no_clitics)
+    print(f"Emoticons extracted into: {std_out_emotes}")
+    std_files.append(std_out_emotes)
+    # Stage 10b: Remove emoticons from file for further processing
+    no_emotes = remove_emoticons(no_clitics)
+    print(f"File generated: {no_emotes}")
+    inter_files.append(no_emotes)
     # Clean up stage to save memory in case of large corpus
     inter_clean = input(
         "Tokenization complete. Do you want to delete the intermediate files? [y/n]: "
