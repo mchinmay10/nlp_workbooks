@@ -15,7 +15,7 @@ def extract_urls(input_file):
     return output_file
 
 
-# Removes urls from files for further tokenization
+# Removes urls from file for further tokenization
 def remove_urls(input_file):
     output_file = "no_urls.txt"
     with open(output_file, "w") as f_out:

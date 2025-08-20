@@ -20,6 +20,10 @@ from hashtag_handler import (
     extract_hashtags,
     remove_hashtags,
 )
+from clitic_handler import (
+    process_clitics,
+    remove_clitics,
+)
 
 
 # Complete pipeline for tokenization
@@ -85,6 +89,14 @@ def tokenize():
     no_hashtags = remove_hashtags(no_usermentions)
     print(f"File generated: {no_hashtags}")
     inter_files.append(no_hashtags)
+    # Stage 9a: Extract clitics and then process them as two tokens
+    std_out_clitics = process_clitics(no_hashtags)
+    print(f"Clitics extracted into: {std_out_clitics}")
+    std_files.append(std_out_clitics)
+    # Stage 9b: Remove clitics from the original file
+    no_clitics = remove_clitics(no_hashtags)
+    print(f"File generated: {no_clitics}")
+    inter_files.append(no_clitics)
     # Clean up stage to save memory in case of large corpus
     inter_clean = input(
         "Tokenization complete. Do you want to delete the intermediate files? [y/n]: "
