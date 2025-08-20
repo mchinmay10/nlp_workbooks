@@ -16,6 +16,10 @@ from usermention_handler import (
     extract_usermentions,
     remove_usermentions,
 )
+from hashtag_handler import (
+    extract_hashtags,
+    remove_hashtags,
+)
 
 
 # Complete pipeline for tokenization
@@ -67,12 +71,20 @@ def tokenize():
     inter_files.append(no_urls)
     # Stage 7a: Extract usermentions as a single token
     std_out_usermentions = extract_usermentions(no_urls)
-    print(f"Extracted usermentions into; {std_out_usermentions}")
+    print(f"Extracted usermentions into: {std_out_usermentions}")
     std_files.append(std_out_usermentions)
     # Stage 7b: Remove usermentions from original file
     no_usermentions = remove_usermentions(no_urls)
     print(f"File generated: {no_usermentions}")
     inter_files.append(no_usermentions)
+    # Stage 8a: Extract hashtags as a single token
+    std_out_hashtags = extract_hashtags(no_usermentions)
+    print(f"Hashtags extracted into: {std_out_hashtags}")
+    std_files.append(std_out_hashtags)
+    # Stage 8b: Remove hashtags from original file
+    no_hashtags = remove_hashtags(no_usermentions)
+    print(f"File generated: {no_hashtags}")
+    inter_files.append(no_hashtags)
     # Clean up stage to save memory in case of large corpus
     inter_clean = input(
         "Tokenization complete. Do you want to delete the intermediate files? [y/n]: "
