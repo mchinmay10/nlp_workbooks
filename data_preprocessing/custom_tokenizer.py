@@ -17,14 +17,6 @@ def stanford_ner():
     pass
 
 
-def handle_clitics():
-    pass
-
-
-def handle_emojis():
-    pass
-
-
 if __name__ == "__main__":
     # remove_tags()
     # word_new_line()

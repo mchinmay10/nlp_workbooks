@@ -28,6 +28,10 @@ from emoji_handler import (
     extract_emoticons,
     remove_emoticons,
 )
+from hyphen_handler import (
+    process_hyphen_words,
+    remove_hyphen_words,
+)
 
 
 # Complete pipeline for tokenization
@@ -109,6 +113,14 @@ def tokenize():
     no_emotes = remove_emoticons(no_clitics)
     print(f"File generated: {no_emotes}")
     inter_files.append(no_emotes)
+    # Stage 11a: Extract hyphenated words as a single token and process them
+    std_out_hyphen_words = process_hyphen_words(no_emotes)
+    print(f"Hyphenated words extracted into: {std_out_hyphen_words}")
+    std_files.append(std_out_hyphen_words)
+    # Stage 11b: Remove hyphenated words from the file for further processing
+    no_hyphen_words = remove_hyphen_words(no_emotes)
+    print(f"File generated: {no_hyphen_words}")
+    inter_files.append(no_hyphen_words)
     # Clean up stage to save memory in case of large corpus
     inter_clean = input(
         "Tokenization complete. Do you want to delete the intermediate files? [y/n]: "
