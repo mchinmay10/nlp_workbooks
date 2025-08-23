@@ -32,6 +32,10 @@ from hyphen_handler import (
     process_hyphen_words,
     remove_hyphen_words,
 )
+from abbreviation_handler import (
+    extract_abbreviations,
+    remove_abbreviations,
+)
 
 
 # Complete pipeline for tokenization
@@ -121,6 +125,14 @@ def tokenize():
     no_hyphen_words = remove_hyphen_words(no_emotes)
     print(f"File generated: {no_hyphen_words}")
     inter_files.append(no_hyphen_words)
+    # Stage 12a: Extract abbreviations as a single token
+    std_out_abbr = extract_abbreviations(no_hyphen_words)
+    print(f"Abbreviations extracted into: {std_out_abbr}")
+    std_files.append(std_out_abbr)
+    # Stage 12b: Remove abbreviations from the file for further processing
+    no_abbr = remove_abbreviations(no_hyphen_words)
+    print(f"File generated: {no_abbr}")
+    inter_files.append(no_abbr)
     # Clean up stage to save memory in case of large corpus
     inter_clean = input(
         "Tokenization complete. Do you want to delete the intermediate files? [y/n]: "
