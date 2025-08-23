@@ -44,6 +44,9 @@ from remaining_handler import (
     extract_remaining,
     remove_remaining,
 )
+from create_std_out import (
+    create_master_std_out,
+)
 
 
 # Complete pipeline for tokenization
@@ -157,6 +160,9 @@ def tokenize():
     no_remaining = remove_remaining(no_puncts)
     print(f"File generated: {no_remaining}")
     inter_files.append(no_remaining)
+    # Create the master output file
+    master_output = create_master_std_out(std_files, "master_output.txt")
+    print(f"Final Tokenization result in: {master_output}")
     # Clean up stage to save memory in case of large corpus
     inter_clean = input(
         "Tokenization complete. Do you want to delete the intermediate files? [y/n]: "
