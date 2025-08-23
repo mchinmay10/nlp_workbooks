@@ -1,6 +1,6 @@
 import re
 
-# Regex patter for detecting hashtags of the type: #example_hashtag01
+# Regex pattern for detecting hashtags of the type: #example_hashtag01
 regex = r"#\w+"
 
 

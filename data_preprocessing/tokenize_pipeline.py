@@ -36,6 +36,10 @@ from abbreviation_handler import (
     extract_abbreviations,
     remove_abbreviations,
 )
+from punctuation_handler import (
+    extract_puncts,
+    remove_puncts,
+)
 
 
 # Complete pipeline for tokenization
@@ -133,6 +137,14 @@ def tokenize():
     no_abbr = remove_abbreviations(no_hyphen_words)
     print(f"File generated: {no_abbr}")
     inter_files.append(no_abbr)
+    # Stage 13a: Extract punctuations as a single token
+    std_out_puncts = extract_puncts(no_abbr)
+    print(f"Punctuations extracted into: {std_out_puncts}")
+    std_files.append(std_out_puncts)
+    # Stage 13b: Remove punctuations from the file for further processing
+    no_puncts = remove_puncts(no_abbr)
+    print(f"File generated: {no_puncts}")
+    inter_files.append(no_puncts)
     # Clean up stage to save memory in case of large corpus
     inter_clean = input(
         "Tokenization complete. Do you want to delete the intermediate files? [y/n]: "
