@@ -40,6 +40,10 @@ from punctuation_handler import (
     extract_puncts,
     remove_puncts,
 )
+from remaining_handler import (
+    extract_remaining,
+    remove_remaining,
+)
 
 
 # Complete pipeline for tokenization
@@ -145,6 +149,14 @@ def tokenize():
     no_puncts = remove_puncts(no_abbr)
     print(f"File generated: {no_puncts}")
     inter_files.append(no_puncts)
+    # Stage 14a: Extract all the remaining token
+    std_out_remaining = extract_remaining(no_puncts)
+    print(f"All the remaining tokens extracted into: {std_out_remaining}")
+    std_files.append(std_out_remaining)
+    # Stage 14b: Remove all the remaining tokens
+    no_remaining = remove_remaining(no_puncts)
+    print(f"File generated: {no_remaining}")
+    inter_files.append(no_remaining)
     # Clean up stage to save memory in case of large corpus
     inter_clean = input(
         "Tokenization complete. Do you want to delete the intermediate files? [y/n]: "
