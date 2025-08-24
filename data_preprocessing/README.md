@@ -85,7 +85,7 @@ Following things that can be improved upon:
 
 2. Right now my code is doing a lot of file I/O. This is NOT the most efficient approach in solving an NLP problem. I have to still find out a more efficient and way to extract, process and delet tokens from the original input file in the subsequent stages of my pipeline.
 
-3. Robust Handling of Date and time. As of now I am not consdering all the possible ways people right dates as well as times. This is resulting in incorrect tokenization and conversion of dates and times in their canonical formats.
+3. Robust Handling of Date and time. As of now I am not consdering all the possible ways people write dates as well as times. This is resulting in incorrect tokenization and conversion of dates and times in their canonical formats.
 
 4. Robust handling of clitics. The fundamental base python dictionary should be more extensive. As of now it isn't.
 
@@ -96,4 +96,4 @@ Following things that can be improved upon:
 
 6. The Stanford tagger is working perfectly fine with these. But not the dataset given by our professor. This is because java is running out of memory.
 
-7. Hence, to implement batch NER tagging.
+7. Hence, to implement batch NER tagging. Currenly my NER Dict text file is created using a short version of the corpus given by our professor (one that doesn't run out of memory!)
