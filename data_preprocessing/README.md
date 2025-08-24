@@ -1,6 +1,6 @@
-# Customized Tokenizer
+# Custom Tokenizer
 
-## Breif Note
+## Brief Note
 
 While creating this assignment I was adamant in not using the NLTK library and to get in-depth hands-on experience about NLP pipeline stages: this one being data preprocessing!
 
