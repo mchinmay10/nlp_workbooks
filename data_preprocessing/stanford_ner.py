@@ -24,6 +24,7 @@ def ner_tagging(input_file):
             encoding="utf-8",
             java_options="-mx4g",
         )
+        print("StanfordNERTagger Initialised!")
     except:
         print(f"Error initializing StanfordNERTagger: {e}")
         print("Please check your file paths and Java installation.")
@@ -37,3 +38,7 @@ def ner_tagging(input_file):
         for entity in tagged_entities:
             f_out.write(str(entity) + "\n")
     return output_file
+
+
+def batch_ner_tagging(input_file, batch_size=10000):
+    output_file = "612203120_NE-Dict.txt"
