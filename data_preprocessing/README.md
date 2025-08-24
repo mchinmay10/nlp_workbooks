@@ -6,7 +6,7 @@ While creating this assignment I was determined in not using the NLTK library an
 
 As a result, I have created a Github repo which has step by step progress reports on how this "grounds-up" tokenizer has been built.
 
-I will be deeply in gratitude if the reader checks it out, interacts with it, and suggests corrective changes (PS: There are going to be a lot if them :) )
+I will be deeply in gratitude if the reader checks it out, interacts with it, and suggests corrective changes (PS: There are going to be a lot of them :) )
 
 Github Repo link: https://github.com/novice0/nlp_workbooks
 
@@ -14,7 +14,7 @@ Feel free to reach out to me for suggesting ANY corrections / improvements at my
 
 ## Introduction
 
-This is a text tokenizer built from scratch using the Python programming language. I designed a pipeline to apply tokenization on the corpus. The core idea of the pipeline is a hierarchy of stages that convert raw text into canonical formats and then process the file for further tokenization.
+This is a text tokenizer built from scratch using the Python programming language. I designed a pipeline to apply tokenization on the corpus. The core idea of the pipeline is a hierarchy of stages that converts raw text into canonical formats and then process the file for further tokenization.
 
 ## Overview of the Hierarchy:
 
@@ -83,9 +83,9 @@ Following things that can be improved upon:
 
 1. More abstraction and modularisation of code!
 
-2. Right now my code is doing a lot of file I/O. This is NOT the most efficient approach in solving an NLP problem. I have to still find out a more efficient and way to extract, process and delet tokens from the original input file in the subsequent stages of my pipeline.
+2. Right now my code is doing a lot of file I/O. This is NOT the most efficient approach in solving an NLP problem. I have to still find out a more efficient way to extract, process and delete tokens from the original input file in the subsequent stages of my pipeline.
 
-3. Robust Handling of Date and time. As of now I am not consdering all the possible ways people write dates as well as times. This is resulting in incorrect tokenization and conversion of dates and times in their canonical formats.
+3. Robust handling of date and time. As of now I am not consdering all the possible ways people write dates as well as times. This is resulting in incorrect tokenization and conversion of dates and times in their canonical formats.
 
 4. Robust handling of clitics. The fundamental base python dictionary should be more extensive. As of now it isn't.
 
