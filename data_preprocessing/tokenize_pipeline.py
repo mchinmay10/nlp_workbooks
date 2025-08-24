@@ -164,7 +164,7 @@ def tokenize():
     print(f"File generated: {no_remaining}")
     inter_files.append(no_remaining)
     # Create the master output file
-    master_output = create_master_std_out(std_files, "master_output.txt")
+    master_output = create_master_std_out(std_files, "612203120_assign2_output.txt")
     print(f"Final Tokenization result in: {master_output}")
     # Stanford NER Stage
     ner_tags = ner_tagging(master_output)

@@ -15,10 +15,15 @@ stanford_ner_model = os.path.join(
 
 # Perform NER on the master output file
 def ner_tagging(input_file):
-    output_file = "tagged_entities.txt"
+    output_file = "612203120_NE-Dict.txt"
     total_tags = []
     try:
-        st = StanfordNERTagger(stanford_ner_model, stanford_ner_jar, encoding="utf-8")
+        st = StanfordNERTagger(
+            stanford_ner_model,
+            stanford_ner_jar,
+            encoding="utf-8",
+            java_options="-mx4g",
+        )
     except:
         print(f"Error initializing StanfordNERTagger: {e}")
         print("Please check your file paths and Java installation.")
