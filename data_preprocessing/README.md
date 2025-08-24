@@ -2,9 +2,9 @@
 
 ## Brief Note
 
-While creating this assignment I was adamant in not using the NLTK library and to get in-depth hands-on experience about NLP pipeline stages: this one being data preprocessing!
+While creating this assignment I was determined in not using the NLTK library and to get in-depth hands-on experience about NLP pipeline stages: this one being data preprocessing!
 
-As a result, I have created a Github repo which has step by step progress reports on how this "naive" tokenizer has been built.
+As a result, I have created a Github repo which has step by step progress reports on how this "grounds-up" tokenizer has been built.
 
 I will be deeply in gratitude if the reader checks it out, interacts with it, and suggests corrective changes (PS: There are going to be a lot if them :) )
 
