@@ -4,7 +4,7 @@ import re
 # Converts every blank space to a new line character
 # Output is a word / word-composition on a single line
 def word_new_line(input_file):
-    output_file = "split_words.txt"
+    output_file = "inter_files/split_words.txt"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
             [

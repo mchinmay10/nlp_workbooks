@@ -3,7 +3,7 @@ import re
 
 # Extracts user mentions eg; @elonmusk and they are treated as a single token
 def extract_usermentions(input_file):
-    output_file = "std_out_usermentions.txt"
+    output_file = "std_outs/std_out_usermentions.txt"
     regex = r"@\w+"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
@@ -16,7 +16,7 @@ def extract_usermentions(input_file):
 
 # Removes user mentions from file for further tokenization
 def remove_usermentions(input_file):
-    output_file = "no_usermentions.txt"
+    output_file = "inter_files/no_usermentions.txt"
     regex = r"@\w+"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:

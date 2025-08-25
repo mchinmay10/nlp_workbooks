@@ -36,7 +36,7 @@ def extract_clitics(input_file):
 
 # Function to remove clitics from the file for further tokenization
 def remove_clitics(input_file):
-    output_file = "no_clitics.txt"
+    output_file = "inter_files/no_clitics.txt"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
             row = f_in.read()
@@ -47,7 +47,7 @@ def remove_clitics(input_file):
 
 # Function that processes the clitics, maps them and them splits them into corresponding parts
 def process_clitics(input_file):
-    output_file = "std_out_clitics.txt"
+    output_file = "std_outs/std_out_clitics.txt"
     clitics = extract_clitics(input_file)
     with open(output_file, "w") as f_out:
         f_out.write(f"{2*len(clitics)}" + "\n")

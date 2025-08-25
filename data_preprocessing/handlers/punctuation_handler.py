@@ -6,7 +6,7 @@ regex = r'[!"#$%&\'()*+,-./:;<=>?@[\\\]^_`{|}~]+'
 
 # Extract punctuations
 def extract_puncts(input_file):
-    output_file = "std_out_punctuations.txt"
+    output_file = "std_outs/std_out_punctuations.txt"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
             punctuations = re.findall(regex, f_in.read())
@@ -18,7 +18,7 @@ def extract_puncts(input_file):
 
 # Remove punctuations from the file for further tokenization
 def remove_puncts(input_file):
-    output_file = "no_punctuations.txt"
+    output_file = "inter_files/no_punctuations.txt"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
             row = f_in.read()

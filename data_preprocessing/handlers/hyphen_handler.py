@@ -17,7 +17,7 @@ def extract_hyphen_words(input_file):
 
 # Remove hyphenated words the file for further tokenization
 def remove_hyphen_words(input_file):
-    output_file = "no_hyphen_words.txt"
+    output_file = "inter_files/no_hyphen_words.txt"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
             row = f_in.read()
@@ -28,7 +28,7 @@ def remove_hyphen_words(input_file):
 
 # Process hyphenated words for splitting and for generating standard output
 def process_hyphen_words(input_file):
-    output_file = "std_out_hyphen_words.txt"
+    output_file = "std_outs/std_out_hyphen_words.txt"
     hyphen_words = extract_hyphen_words(input_file)
     words_list = []
     with open(output_file, "w") as f_out:

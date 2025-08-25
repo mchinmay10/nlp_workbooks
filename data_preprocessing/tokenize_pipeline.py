@@ -1,46 +1,45 @@
-from canonical_date_time import (
+from handlers.canonical_date_time_handler import (
     date_to_canonical,
     time_to_canonical,
     extract_canonical_dates,
     extract_canonical_times,
     remove_canonical_date_time,
 )
-from inter_cleanup import clean_up_files
-from html_tag_removal import remove_tags
-from word_new_line import word_new_line
-from url_handler import (
+from handlers.html_tag_handler import remove_tags
+from handlers.word_handler import word_new_line
+from handlers.url_handler import (
     extract_urls,
     remove_urls,
 )
-from usermention_handler import (
+from handlers.usermention_handler import (
     extract_usermentions,
     remove_usermentions,
 )
-from hashtag_handler import (
+from handlers.hashtag_handler import (
     extract_hashtags,
     remove_hashtags,
 )
-from clitic_handler import (
+from handlers.clitic_handler import (
     process_clitics,
     remove_clitics,
 )
-from emoji_handler import (
+from handlers.emoji_handler import (
     extract_emoticons,
     remove_emoticons,
 )
-from hyphen_handler import (
+from handlers.hyphen_handler import (
     process_hyphen_words,
     remove_hyphen_words,
 )
-from abbreviation_handler import (
+from handlers.abbreviation_handler import (
     extract_abbreviations,
     remove_abbreviations,
 )
-from punctuation_handler import (
+from handlers.punctuation_handler import (
     extract_puncts,
     remove_puncts,
 )
-from remaining_handler import (
+from handlers.remaining_handler import (
     extract_remaining,
     remove_remaining,
 )
@@ -50,6 +49,7 @@ from create_std_out import (
 from stanford_ner import (
     ner_tagging,
 )
+from inter_cleanup import clean_up_files
 
 
 # Complete pipeline for tokenization

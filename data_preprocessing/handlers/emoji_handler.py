@@ -23,7 +23,7 @@ regex = r"(?:[:;]-?['\)\(DPp3o|/])|(?:<3)|(?:\^_?\^)|(?:[xX]D)|(?:8\))"
 
 # Extract emoticons in standard format
 def extract_emoticons(input_file):
-    output_file = "std_out_emoticons.txt"
+    output_file = "std_outs/std_out_emoticons.txt"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
             emoticons = re.findall(regex, f_in.read())
@@ -35,7 +35,7 @@ def extract_emoticons(input_file):
 
 # Remove emoticons from file for further tokenization
 def remove_emoticons(input_file):
-    output_file = "no_emoticons.txt"
+    output_file = "inter_files/no_emoticons.txt"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
             row = f_in.read()

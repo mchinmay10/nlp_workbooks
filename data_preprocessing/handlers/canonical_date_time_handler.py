@@ -98,7 +98,7 @@ def time_to_canonical(input_file):
 # Extraction functions for creating standard outputs
 # A function that extracts canonical dates into a seperate file as a list
 def extract_canonical_dates(input_file):
-    output_file = "std_out_dates.txt"
+    output_file = "std_outs/std_out_dates.txt"
     regex = r"CF:D:\d{4}-\d{2}-\d{2}"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
@@ -111,7 +111,7 @@ def extract_canonical_dates(input_file):
 
 # Extracts canonical times into a seperate file as a list
 def extract_canonical_times(input_file):
-    output_file = "std_out_times.txt"
+    output_file = "std_outs/std_out_times.txt"
     regex = r"CF:T:\d{2}:\d{2}:[A-Z]{3}"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
@@ -125,7 +125,7 @@ def extract_canonical_times(input_file):
 # Removing these canonical formats from the file
 def remove_canonical_date_time(input_file):
     inter_file = "no_date.txt"
-    output_file = "no_date_time.txt"
+    output_file = "inter_files/no_date_time.txt"
     regex_date = r"CF:D:\d{4}-\d{2}-\d{2}"
     regex_time = r"CF:T:\d{2}:\d{2}:[A-Z]{3}"
     with open(inter_file, "w") as f_out:

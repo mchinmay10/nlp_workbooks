@@ -6,7 +6,7 @@ regex = r"#\w+"
 
 # Extracts hashtags eg; #nlpisgreat and treats them as a single token
 def extract_hashtags(input_file):
-    output_file = "std_out_hashtags.txt"
+    output_file = "std_outs/std_out_hashtags.txt"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
             hashtags = re.findall(regex, f_in.read())
@@ -18,7 +18,7 @@ def extract_hashtags(input_file):
 
 # Removes urls from files for further tokenization
 def remove_hashtags(input_file):
-    output_file = "no_hashtags.txt"
+    output_file = "inter_files/no_hashtags.txt"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
             row = f_in.read()

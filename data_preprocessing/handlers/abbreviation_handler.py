@@ -6,7 +6,7 @@ regex = r"(?:[A-Z]+\.)+"
 
 # Extract abbreviations
 def extract_abbreviations(input_file):
-    output_file = "std_out_abbreviations.txt"
+    output_file = "std_outs/std_out_abbreviations.txt"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
             abbreviations = re.findall(regex, f_in.read())
@@ -18,7 +18,7 @@ def extract_abbreviations(input_file):
 
 # Remove abbreviations from the file for further tokenization
 def remove_abbreviations(input_file):
-    output_file = "no_abbreviations.txt"
+    output_file = "inter_files/no_abbreviations.txt"
     with open(output_file, "w") as f_out:
         with open(input_file, "r") as f_in:
             row = f_in.read()
