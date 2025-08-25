@@ -1,2 +1,6 @@
 data_preprocessing/*.txt
+data_preprocessing/std_outs
+data_preprocessing/inter_files
+
 data_preprocessing/__pycache__
+data_preprocessing/handlers/__pycache__
