@@ -9,10 +9,7 @@ from handlers.html_tag_handler import remove_tags
 from handlers.word_handler import word_new_line
 from handlers.url_handler import handle_urls
 from handlers.usermention_handler import handle_usermentions
-from handlers.hashtag_handler import (
-    extract_hashtags,
-    remove_hashtags,
-)
+from handlers.hashtag_handler import handle_hashtags
 from handlers.clitic_handler import (
     process_clitics,
     remove_clitics,
@@ -97,12 +94,10 @@ def tokenize():
     std_files.append(std_out_usermentions)
     print(f"File generated: {no_usermentions}")
     inter_files.append(no_usermentions)
-    # Stage 8a: Extract hashtags as a single token
-    std_out_hashtags = extract_hashtags(no_usermentions)
+    # Stage 8: Extract and remove hashtags
+    std_out_hashtags, no_hashtags = handle_hashtags(no_usermentions)
     print(f"Hashtags extracted into: {std_out_hashtags}")
     std_files.append(std_out_hashtags)
-    # Stage 8b: Remove hashtags from original file
-    no_hashtags = remove_hashtags(no_usermentions)
     print(f"File generated: {no_hashtags}")
     inter_files.append(no_hashtags)
     # Stage 9a: Extract clitics and then process them as two tokens

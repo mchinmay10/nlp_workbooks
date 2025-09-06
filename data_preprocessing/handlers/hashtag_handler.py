@@ -25,3 +25,10 @@ def remove_hashtags(input_file):
             mod_content = re.sub(regex, "", row)
             f_out.write(mod_content)
     return output_file
+
+
+# Function that executes both the above functions
+def handle_hashtags(input_file):
+    extract_file = extract_hashtags(input_file)
+    remove_file = remove_hashtags(input_file)
+    return extract_file, remove_file
