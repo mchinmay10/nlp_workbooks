@@ -7,14 +7,8 @@ from handlers.canonical_date_time_handler import (
 )
 from handlers.html_tag_handler import remove_tags
 from handlers.word_handler import word_new_line
-from handlers.url_handler import (
-    extract_urls,
-    remove_urls,
-)
-from handlers.usermention_handler import (
-    extract_usermentions,
-    remove_usermentions,
-)
+from handlers.url_handler import handle_urls
+from handlers.usermention_handler import handle_usermentions
 from handlers.hashtag_handler import (
     extract_hashtags,
     remove_hashtags,
@@ -91,20 +85,16 @@ def tokenize():
     print("Removed canonical formats of date and time")
     print(f"File generated: {no_date_time}")
     inter_files.append(no_date_time)
-    # Stage 6a: Extract urls as a single token
-    std_out_urls = extract_urls(no_date_time)
+    # Stage 6: Extract and Remove urls
+    std_out_urls, no_urls = handle_urls(no_date_time)
     print(f"URLs extracted into: {std_out_urls}")
     std_files.append(std_out_urls)
-    # Stage 6b: Remove urls from original file
-    no_urls = remove_urls(no_date_time)
     print(f"File generated: {no_urls}")
     inter_files.append(no_urls)
-    # Stage 7a: Extract usermentions as a single token
-    std_out_usermentions = extract_usermentions(no_urls)
+    # Stage 7: Extract and Remove usermentions
+    std_out_usermentions, no_usermentions = handle_usermentions(no_urls)
     print(f"Extracted usermentions into: {std_out_usermentions}")
     std_files.append(std_out_usermentions)
-    # Stage 7b: Remove usermentions from original file
-    no_usermentions = remove_usermentions(no_urls)
     print(f"File generated: {no_usermentions}")
     inter_files.append(no_usermentions)
     # Stage 8a: Extract hashtags as a single token

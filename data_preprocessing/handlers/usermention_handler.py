@@ -24,3 +24,10 @@ def remove_usermentions(input_file):
             mod_content = re.sub(regex, "", row)
             f_out.write(mod_content)
     return output_file
+
+
+# Function that executes botht the above functions
+def handle_usermentions(input_file):
+    extract_file = extract_usermentions(input_file)
+    remove_file = remove_usermentions(input_file)
+    return extract_file, remove_file

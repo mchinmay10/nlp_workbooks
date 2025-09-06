@@ -24,3 +24,10 @@ def remove_urls(input_file):
             mod_content = re.sub(regex, "", row)
             f_out.write(mod_content)
     return output_file
+
+
+# Combined function that executes both the above functions
+def handle_urls(input_file):
+    extract_file = extract_urls(input_file)
+    remove_file = remove_urls(input_file)
+    return extract_file, remove_file
