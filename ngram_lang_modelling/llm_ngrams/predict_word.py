@@ -2,7 +2,6 @@ import sys
 
 
 def load_ngram_model(file_path):
-    """Loads an n-gram model from a file into a dictionary."""
     model = {}
     try:
         with open(file_path, "r", encoding="utf-8") as f:
@@ -18,7 +17,6 @@ def load_ngram_model(file_path):
 
 
 def predict_next_word(input_phrase, mis_no):
-    """Predicts the next word based on the input phrase using the generated n-gram models."""
     tokens = input_phrase.lower().split()
     n = len(tokens) + 1  # We need the (n+1)-gram model
 
