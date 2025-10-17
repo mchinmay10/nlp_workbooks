@@ -1,0 +1,112 @@
+ASSIGNMENT 6: CYK PARSING ALGORITHM IMPLEMENTATION
+===================================================
+
+Student: 612203120
+Course: Natural Language Processing
+Assignment: Parsing using CYK Algorithm
+
+OBJECTIVE:
+----------
+Implement the CYK (Cocke-Younger-Kasami) dynamic programming algorithm for parsing 
+an input text sentence using a Probabilistic Context-Free Grammar (PCFG). Construct 
+an upper triangular table and determine the most probable parse for the sentence.
+
+INPUT:
+------
+- Text sentence: "Astronomers saw stars with telescope"
+- Probabilistic Context-Free Grammar (PCFG) with the following rules:
+
+PCFG Rules:
+-----------
+S → NP VP [1.0]
+VP → V NP [0.7]
+VP → VP PP [0.3]
+PP → P NP [1.0]
+P → with [1.0]
+V → saw [1.0]
+NP → NP PP [0.4]
+NP → astronomers [0.1]
+NP → ears [0.18]
+NP → saw [0.04]
+NP → stars [0.18]
+NP → telescope [0.1]
+
+ALGORITHM IMPLEMENTATION:
+------------------------
+The CYK algorithm was implemented using dynamic programming with the following steps:
+
+1. **Initialization**: Create an upper triangular table where cell (i,j) represents 
+   the span from word i to word j-1.
+
+2. **Base Case (Length 1 spans)**: Fill diagonal cells with terminal rules:
+   - "astronomers" → NP [0.1]
+   - "saw" → V [1.0], NP [0.04] (multiple derivations possible)
+   - "stars" → NP [0.18]
+   - "with" → P [1.0]
+   - "telescope" → NP [0.1]
+
+3. **Recursive Case (Longer spans)**: For each span length from 2 to n:
+   - Try all possible split points k within the span
+   - For each split, combine left and right non-terminals using grammar rules
+   - Calculate probability as: P(rule) × P(left) × P(right)
+   - Store all possible derivations with their probabilities
+
+4. **Deduplication**: Remove duplicate derivations and sort by probability
+
+5. **Parse Tree Extraction**: Reconstruct the most probable parse tree by 
+   backtracking through the table.
+
+KEY FEATURES:
+------------
+- **Multiple Derivations**: The algorithm captures all possible derivations 
+  for each span, not just the best one.
+- **Probability Calculation**: Accurate probability computation following 
+  PCFG principles.
+- **Upper Triangular Table**: Proper CYK table format with spans (i,j).
+- **Parse Tree Generation**: Extraction of the most probable parse tree.
+
+RESULTS:
+--------
+The algorithm successfully parsed the sentence and produced the following results:
+
+**Sentence Validity**: ✓ VALID
+**Best Parse Probability**: 0.000504
+
+**Most Probable Parse Tree**:
+(S (NP astronomers) (VP (V saw) (NP (NP stars) (PP (P with) (NP telescope)))))
+
+**Key Upper Triangular Table Entries**:
+- Span (1,3) "saw stars": VP [0.126]
+- Span (0,3) "astronomers saw stars": S [0.0126]
+- Span (1,5) "saw stars with telescope": VP₁ [0.00504], VP₂ [0.00378]
+- Span (0,5) "astronomers saw stars with telescope": S₁ [0.000504], S₂ [0.000378]
+
+VERIFICATION:
+------------
+The implementation was cross-checked with the expected output and shows:
+✓ Correct probability values
+✓ Proper multiple derivations (VP₁, VP₂, S₁, S₂)
+✓ Accurate upper triangular table structure
+✓ Valid sentence parsing with S derivations in cell (0,5)
+
+TECHNICAL DETAILS:
+-----------------
+- **Language**: Python 3
+- **Data Structure**: 2D list of dictionaries containing derivation lists
+- **Time Complexity**: O(n³ × |G|) where n is sentence length and |G| is grammar size
+- **Space Complexity**: O(n² × |G|)
+- **Floating Point Precision**: Minor differences due to floating point arithmetic
+
+CONCLUSION:
+----------
+The CYK parsing algorithm was successfully implemented and correctly parsed the 
+given sentence using the provided PCFG. The algorithm found multiple valid 
+derivations and identified the most probable parse tree. The results match the 
+expected output, confirming the correctness of the implementation.
+
+The implementation demonstrates understanding of:
+- Dynamic programming for parsing
+- Probabilistic context-free grammars
+- Parse tree reconstruction
+- Multiple derivation handling
+- Upper triangular table construction
