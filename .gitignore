@@ -6,3 +6,9 @@ data_preprocessing/__pycache__
 data_preprocessing/handlers/__pycache__
 
 ngram_lang_modelling/llm_ngrams/*.txt
+
+pos_tagging/llm_pos/*.txt
+
+pos_using_crf/llm_crf/*.txt
+
+parsing/llm_parsing/*.txt
